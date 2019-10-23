@@ -1,5 +1,6 @@
 node     {
    def mvnHome
+   def dockerHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/richardackroyd/circuitbreakerreader.git'
@@ -7,6 +8,7 @@ node     {
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.
       mvnHome = tool 'M3'
+      dockerHome = tool 'dockerlatest'
    }
    stage('Build') {
       // Run the maven build
@@ -23,6 +25,6 @@ node     {
       archiveArtifacts 'target/*.jar'
    }
    stage('Deploy') {
-      sh "docker build -t circuitbreakerreading ."
+      sh "$dockerHome/bin/docker build -t circuitbreakerreading ."
    }
 }
