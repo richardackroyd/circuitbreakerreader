@@ -3,12 +3,12 @@ pipeline {
      stages {
           stage("Compile") {
                steps {
-                    sh "./mvn compile"
+                    sh "./mvnw compile"
                }
           }
           stage("Unit test") {
                steps {
-                    sh "./mvn test"
+                    sh "./mvnw test"
                }
           }
      }
