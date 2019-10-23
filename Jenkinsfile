@@ -1,4 +1,4 @@
-node {
+node     {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
@@ -21,5 +21,7 @@ node {
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archiveArtifacts 'target/*.jar'
+   }
+   stage('Deploy') {
    }
 }
