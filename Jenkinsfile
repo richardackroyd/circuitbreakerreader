@@ -23,6 +23,6 @@ node     {
       archiveArtifacts 'target/*.jar'
    }
    stage('Deploy') {
-     docker build -t circuitbreakerreading .
+      sh "docker build -t circuitbreakerreading ."
    }
 }
