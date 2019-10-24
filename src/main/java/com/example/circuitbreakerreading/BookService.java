@@ -19,6 +19,18 @@ public class BookService {
     this.restTemplate = rest;
   }
 
+  public String readingListNoHystrix() {
+    URI uri = URI.create("http://localhost:8090/recommended");
+
+    return this.restTemplate.getForObject(uri, String.class);
+  }
+
+  public String readingListDelayedNoHystrix() {
+    URI uri = URI.create("http://localhost:8090/recommended-delayed");
+
+    return this.restTemplate.getForObject(uri, String.class);
+  }
+
   @HystrixCommand(fallbackMethod = "reliable")
   public String readingList() {
     URI uri = URI.create("http://localhost:8090/recommended");

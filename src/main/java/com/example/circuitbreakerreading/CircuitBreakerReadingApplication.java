@@ -25,6 +25,16 @@ public class CircuitBreakerReadingApplication {
     return builder.build();
   }
 
+  @RequestMapping("/to-read-nohystrix")
+  public String toReadNoHystrix() {
+    return "Please read: " + bookService.readingListNoHystrix();
+  }
+
+  @RequestMapping("/to-read-delayed-nohystrix")
+  public String toReadDelayedNoHystrix() {
+    return "Please read: " + bookService.readingListDelayedNoHystrix();
+  }
+
   @RequestMapping("/to-read")
   public String toRead() {
     return "Please read: " + bookService.readingList();
