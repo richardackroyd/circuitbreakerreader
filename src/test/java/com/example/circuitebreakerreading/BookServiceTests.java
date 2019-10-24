@@ -25,7 +25,7 @@ public class BookServiceTests {
 
     @Test
     public void readingListTest() {
-        this.server.expect(requestTo("http://localhost:8090/recommended"))
+        this.server.expect(requestTo("http://192.168.0.22:8090/recommended"))
                 .andRespond(withSuccess("books", MediaType.TEXT_PLAIN));
         assertThat(bookService.readingList()).isEqualTo("books");
     }

@@ -44,18 +44,18 @@ public class CircuitBreakerReadingApplicationTests {
 
     @Test
     public void toReadTest() {
-        this.server.expect(requestTo("http://localhost:8090/recommended"))
+        this.server.expect(requestTo("http://192.168.0.22:8090/recommended"))
                 .andExpect(method(HttpMethod.GET)).
                 andRespond(withSuccess("books", MediaType.TEXT_PLAIN));
         String books = testRestTemplate.getForObject("/to-read", String.class);
-        assertThat(books).isEqualTo("books");
+        assertThat(books).isEqualTo("Please read: books");
     }
 
     @Test
     public void toReadFailureTest() {
-        this.server.expect(requestTo("http://localhost:8090/recommended")).
+        this.server.expect(requestTo("http://192.168.0.22:8090/recommended")).
                 andExpect(method(HttpMethod.GET)).andRespond(withServerError());
         String books = testRestTemplate.getForObject("/to-read", String.class);
-        assertThat(books).isEqualTo("Cloud Native Java (O'Reilly)");
+        assertThat(books).isEqualTo("Please read: Cloud Native Java (O'Reilly)");
     }
 }
