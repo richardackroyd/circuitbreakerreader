@@ -25,13 +25,13 @@ public class BookServiceTests {
 
     @Test
     public void readingListTest() {
-        this.server.expect(requestTo("http://192.168.0.22:8090/recommended"))
+        this.server.expect(requestTo("http://localhost:8090/recommended"))
                 .andRespond(withSuccess("books", MediaType.TEXT_PLAIN));
         assertThat(bookService.readingList()).isEqualTo("books");
     }
 
     @Test
     public void reliable() {
-        assertThat(bookService.reliable()).isEqualTo("Cloud Native Java (O'Reilly)");
+        assertThat(bookService.reliable()).isEqualTo("Cloud Native Java (O'Reilly) - returned as a fallbackMethod via Hystrix because the Bookstore service is not stable");
     }
 }

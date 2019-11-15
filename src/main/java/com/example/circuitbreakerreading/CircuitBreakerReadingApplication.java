@@ -17,36 +17,36 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrixDashboard
 public class CircuitBreakerReadingApplication {
 
-  @Autowired
-  private BookService bookService;
+    @Autowired
+    private BookService bookService;
 
-  @Bean
-  public RestTemplate rest(RestTemplateBuilder builder) {
-    return builder.build();
-  }
+    @Bean
+    public RestTemplate rest(RestTemplateBuilder builder) {
+        return builder.build();
+    }
 
-  @RequestMapping("/to-read-nohystrix")
-  public String toReadNoHystrix() {
-    return "Please read: " + bookService.readingListNoHystrix();
-  }
+    @RequestMapping("/to-read-nohystrix")
+    public String toReadNoHystrix() {
+        return "Please read: " + bookService.readingListNoHystrix();
+    }
 
-  @RequestMapping("/to-read-delayed-nohystrix")
-  public String toReadDelayedNoHystrix() {
-    return "Please read: " + bookService.readingListDelayedNoHystrix();
-  }
+    @RequestMapping("/to-read-delayed-nohystrix")
+    public String toReadDelayedNoHystrix() {
+        return "Please read: " + bookService.readingListDelayedNoHystrix();
+    }
 
-  @RequestMapping("/to-read")
-  public String toRead() {
-    return "Please read: " + bookService.readingList();
-  }
+    @RequestMapping("/to-read")
+    public String toRead() {
+        return "Please read: " + bookService.readingList();
+    }
 
-  @RequestMapping("/to-read-delayed")
-  public String toReadDelayed() {
-    return "This call has a delay in the response.....Please read: " + bookService.readingListDelayed();
-  }
+    @RequestMapping("/to-read-delayed")
+    public String toReadDelayed() {
+        return "This call has a delay in the response.....Please read: " + bookService.readingListDelayed();
+    }
 
 
-  public static void main(String[] args) {
-    SpringApplication.run(CircuitBreakerReadingApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(CircuitBreakerReadingApplication.class, args);
+    }
 }

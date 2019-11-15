@@ -49,7 +49,7 @@ public class BookService {
   }
 
   public String reliable() {
-    return "Cloud Native Java (O'Reilly)";
+    return "Cloud Native Java (O'Reilly) - returned as a fallbackMethod via Hystrix because the Bookstore service is not stable";
   }
 
 }
